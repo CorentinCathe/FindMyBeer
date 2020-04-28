@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
   <meta charset="UTF-8" />
   <title>Find My Bear</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/brew.css">
+  <link rel="stylesheet" href="assets/materializeDesign/css/materialize.css">
   <script src="assets/Vue/vue.js"></script>
-</head>
+  </head>
 
-<body>
-  <div class="container">
-    <app></app>
-  </div>
-
-  <div class="container">
-    <div class="row">
-      <breweries class="col-12"></breweries>
+  <body>
+    <div class="container">
+      <app></app>
     </div>
-  </div>
 
-  <script type="module" src="src/components/app.js"></script>
-  <script type="module" src="src/components/brew.js"></script>
-  <script type="module" src="src/components/breweries.js"></script>
-  <script type="module" src="src/main.js"></script>
-</body>
+    <div class="container">
+      <div class="row">
+        <breweries class="col-12"></breweries>
+      </div>
+    </div>
+
+    <script type="module" src="src/omdb.js"></script>
+    <script type="module" src="src/components/search.js"></script>
+    <script type="module" src="src/components/app.js"></script>
+    <script type="module" src="src/components/brew.js"></script>
+    <script type="module" src="src/components/breweries.js"></script>
+    <script type="module" src="src/main.js"></script>
+  </body>
 
 </html>

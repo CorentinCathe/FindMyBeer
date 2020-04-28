@@ -1,12 +1,10 @@
 Vue.component('brew', {
     props: ["brew"],
-    template: ` <tr class="brew">
-                    <td>
-                        <h3>{{brew.name_breweries}}</h3>
+    template: ` <div class="brew">
+                        <h4>{{brew.name_breweries}}</h4>
                         <p>{{brew.address1}} {{brew.state}} {{brew.country}}</p>
-                        <button type="button">Bières</button>
-                    </td>
-                </tr>`,
+                        <input type="button" class="btn" value="Bières">
+                </div>`,
     // data: () => {
     //     return {
     //         brew: {

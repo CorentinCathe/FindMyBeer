@@ -4,7 +4,7 @@ Vue.component('breweries', {
                         <brew v-for="brew in brews" v-bind:key="brew.fields.id" :brew=brew.fields v-on:brew-selected="brewSelected($event)"></brew>
                     </div>
                 </div>`,
-    data: function () {
+    data: function() {
         return {
             brews: []
         }
@@ -47,8 +47,7 @@ Vue.component('breweries', {
                     "dist": "17598.7706892",
                     "country": "United Kingdom",
                     "coordinates": [
-                        51.5002,
-                        -0.1262
+                        51.5002, -0.1262
                     ],
                     "last_mod": "2010-07-22T20:00:20+00:00",
                     "state": "London",
@@ -57,8 +56,7 @@ Vue.component('breweries', {
                 },
                 "geometry": {
                     "type": "Point",
-                    "coordinates": [
-                        -0.1262,
+                    "coordinates": [-0.1262,
                         51.5002
                     ]
                 },
@@ -76,8 +74,7 @@ Vue.component('breweries', {
                     "address1": "26 Osiers Road",
                     "address2": "Wandsworth",
                     "coordinates": [
-                        51.4611,
-                        -0.1966
+                        51.4611, -0.1966
                     ],
                     "phone": "020 8875 7000",
                     "country": "England",
@@ -86,8 +83,7 @@ Vue.component('breweries', {
                 },
                 "geometry": {
                     "type": "Point",
-                    "coordinates": [
-                        -0.1966,
+                    "coordinates": [-0.1966,
                         51.4611
                     ]
                 },
@@ -103,8 +99,7 @@ Vue.component('breweries', {
                     "last_mod": "2010-07-22T20:00:20+00:00",
                     "address1": "Chiswick Lane South",
                     "coordinates": [
-                        51.4877,
-                        -0.24980000000000002
+                        51.4877, -0.24980000000000002
                     ],
                     "phone": "44-(0208)-996-2000",
                     "state": "London",
@@ -114,8 +109,7 @@ Vue.component('breweries', {
                 },
                 "geometry": {
                     "type": "Point",
-                    "coordinates": [
-                        -0.24980000000000002,
+                    "coordinates": [-0.24980000000000002,
                         51.4877
                     ]
                 },
@@ -130,8 +124,7 @@ Vue.component('breweries', {
                     "last_mod": "2010-07-22T20:00:20+00:00",
                     "address1": "26 Old Cross",
                     "coordinates": [
-                        51.7975,
-                        -0.0806
+                        51.7975, -0.0806
                     ],
                     "phone": "44-(01992)-584911",
                     "state": "Hertfordshire",
@@ -141,8 +134,7 @@ Vue.component('breweries', {
                 },
                 "geometry": {
                     "type": "Point",
-                    "coordinates": [
-                        -0.0806,
+                    "coordinates": [-0.0806,
                         51.7975
                     ]
                 },
@@ -152,7 +144,7 @@ Vue.component('breweries', {
         this.brews = data
     },
     methods: {
-        brewSelected: function (id) {
+        brewSelected: function(id) {
             console.log(id);
         }
     }

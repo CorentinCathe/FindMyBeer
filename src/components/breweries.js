@@ -1,12 +1,28 @@
+import useAPI from "../api.js";
+
 Vue.component('breweries', {
-    template: ` <div class="col s8">
-                    <div class="row">
-                        <brew v-for="brew in brews" v-bind:key="brew.fields.id" :brew=brew.fields v-on:brew-selected="brewSelected($event)"></brew>
+    template: ` <div id="breweries">
+                    <div class="col s6">
+                        <div class="row">
+                            <brewery v-for="brewery in breweries" v-bind:key="brewery.fields.id" :brewery=brewery.fields v-on:brewery-selected="brewerySelected($event)"></brewery>
+                        </div>
+                    </div>
+                    <div class="col s6">
+                        <div class="row">
+                            <h3 v-if="this.brewerySelectedName">{{this.brewerySelectedName}}</h3>
+                            <beer v-for="beer in beers" v-bind:key="beer.fields.id" :beer=beer.fields></beer>
+                            <div v-if="!beers.length && this.brewerySelectedID" class="progress">
+                                <div class="indeterminate"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>`,
     data: function() {
         return {
-            brews: []
+            breweries: [],
+            beers: [],
+            brewerySelectedName: null,
+            brewerySelectedID: null
         }
     },
     mounted() {
@@ -141,11 +157,24 @@ Vue.component('breweries', {
                 "record_timestamp": "2016-09-26T03:46:21.236000+00:00"
             }
         ]
-        this.brews = data
+        this.breweries = data
     },
     methods: {
-        brewSelected: function(id) {
+        brewerySelected: function(id) {
             console.log(id);
+            this.beers = [];
+            this.brewerySelectedName = null;
+            this.brewerySelectedID = id;
+            useAPI.getBreweryByID(id)
+                .then(data => {
+                    this.brewerySelectedName = data.nhits == 0 ? null : data.records[0].fields.name_breweries
+                })
+                .catch(err => alert("Une erreur s'est produite : " + err));
+            useAPI.getBeersByID(id)
+                .then(data => {
+                    this.beers = data.nhits == 0 ? [] : data.records
+                })
+                .catch(err => alert("Une erreur s'est produite : " + err));
         }
     }
 })

@@ -1,21 +1,22 @@
-import useCityApi from "../omdb.js";
+import useApi from "../api.js";
 
 Vue.component('search', {
     template: `<form  @submit.prevent="handleSubmit">
                     <input type="text" v-model="cityName" id="searchCity"/>
                     <input type="submit" value="SEARCH" class="btn"/>
             </form>`,
-    data : function() {
+    data: function() {
         return {
             cityName: ""
-        }},
-    methods : {
-        handleSubmit : function() {
-            useCityApi.bySearch(this.cityName).then(data =>  this.$emit('search-done', data.Search));
+        }
+    },
+    methods: {
+        handleSubmit: function() {
+            useApi.bySearch(this.cityName).then(data => this.$emit('search-done', data.Search)).catch((err) => console.log(err));
         },
-        autoComplet : function() {
+        autoComplet: function() {
             let input = document.getElementById('#searchCity')
-            
+
         }
     },
 

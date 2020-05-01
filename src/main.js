@@ -1,7 +1,3 @@
 const vue = new Vue({
-    el : 'app'
+    el: 'app'
 });
-
-const breweries = new Vue({
-    el : 'breweries'
-})

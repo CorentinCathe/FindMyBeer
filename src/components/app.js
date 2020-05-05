@@ -7,8 +7,8 @@ Vue.component("app", {
                     <search  @search-done="searchCompleted($event)"> </search>
                     <div class="col s6">
                         <div class="row">
-                            <h3 v-if="this.city">{{this.city.formatted_address}}</h3>
-                            <h4 v-if="!this.breweries">Aucune brasserie connue</h4>
+                            <h3 v-if="this.city">{{this.city.name}}</h3>
+                            <h4 v-if="!this.breweries.length && this.city">Aucune brasserie connue</h4>
                             <brewery v-for="brewery in breweries" v-bind:key="brewery.fields.id" :brewery=brewery.fields v-on:brewery-selected="brewerySelected($event)"></brewery>
                         </div>
                     </div>

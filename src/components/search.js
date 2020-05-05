@@ -46,7 +46,7 @@ Vue.component('search', {
             useApi.bySearch(this.cityName).then(data => this.$emit('search-done', data)).catch((err) => console.log(err));
         },
         onAutoCompleteHandler: function(data) {
-            console.log(data);
+            this.cityName = data;
         }
     },
 

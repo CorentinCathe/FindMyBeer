@@ -3,7 +3,7 @@ import useAPI from "../api.js";
 const DIST = 40000
 
 Vue.component("app", {
-    template: `<div  id="app"> 
+    template: ` <div id="app"> 
                     <search  @search-done="searchCompleted($event)"> </search>
                     <div class="col s6">
                         <div class="row">
@@ -21,7 +21,7 @@ Vue.component("app", {
                             </div>
                         </div>
                     </div>
-               </div>`,
+                </div>`,
     data: function() {
         return {
             city: null,
@@ -34,7 +34,6 @@ Vue.component("app", {
     },
     methods: {
         searchCompleted: function(data) {
-            console.log(data)
             if (data.status === "OK") {
                 this.city = data.candidates[0];
                 this.breweries = []

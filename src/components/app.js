@@ -166,8 +166,10 @@ Vue.component("app", {
     methods: {
         searchCompleted: function(data) {
             console.log(data)
-            if (data != undefined) {
-                this.city = data;
+            if (data.status === "OK") {
+                this.city = data.candidates[0];
+
+
                 this.selectedId = null;
             }
         },

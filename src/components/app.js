@@ -5,12 +5,13 @@ const DIST = 40000
 Vue.component("app", {
     template: ` <div id="app"> 
                     <search  @search-done="searchCompleted($event)"> </search>
+                    <mapVue v-if="infoMap" :infoMap=infoMap></mapVue>
                     <div class="col s6">
                         <div class="row">
-                            <h3 v-if="this.city">{{this.city.name}}</h3>
+                            <h3 v-if="this.city" class="title">{{this.city.name}}</h3>
                             <h4 v-if="!this.breweries.length && this.city">Aucune brasserie connue</h4>
+                            </div>
                             <brewery v-for="brewery in breweries" v-bind:key="brewery.fields.id" :brewery=brewery.fields v-on:brewery-selected="brewerySelected($event)"></brewery>
-                        </div>
                     </div>
                     <div class="col s6">
                         <div class="row">
@@ -29,7 +30,8 @@ Vue.component("app", {
             breweries: [],
             beers: [],
             brewerySelectedName: null,
-            brewerySelectedID: null
+            brewerySelectedID: null,
+            infoMap: null
         };
     },
     methods: {
@@ -41,13 +43,19 @@ Vue.component("app", {
                 this.brewerySelectedID = null;
                 this.beers = []
                 useAPI.getNearbyBreweries(this.city.geometry.location.lat, this.city.geometry.location.lng, DIST)
-                    .then(data => this.breweries = data.records)
+                    .then(data => {
+                        let coordBreweries = data.records.map(brewery => {return {lat: brewery.fields.coordinates[0], lon: brewery.fields.coordinates[1]}})
+                        this.infoMap = {
+                            city: this.city.geometry.location,
+                            markers: coordBreweries
+                        }
+                        this.breweries = data.records
+                    })
 
                 this.selectedId = null;
             }
         },
         brewerySelected: function(id) {
-            console.log(id);
             if (id != this.brewerySelectedID) {
                 this.beers = [];
                 this.brewerySelectedName = null;

@@ -4,7 +4,7 @@ const Session_token = Math.floor(Math.random() * 1000000000)
 const useApi = {
     bySearch: (search) =>
         new Promise((resolve, reject) => {
-            const CITY_API_DETAILS = `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=${API_KEY}&input=${search}&inputtype=textquery&fields=name,formatted_address,geometry`;
+            const CITY_API_DETAILS = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=${API_KEY}&input=${search}&inputtype=textquery&fields=name,formatted_address,geometry`;
 
             fetch(CITY_API_DETAILS)
                 .then((response) => response.json())
@@ -13,7 +13,7 @@ const useApi = {
         }),
     forAutoCompleted: (search) =>
         new Promise((resolve, reject) => {
-            const CITY_API_AUTOCOMPLETES = `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/autocomplete/json?key=${API_KEY}&input=${search}&sessiontoken=${Session_token}`;
+            const CITY_API_AUTOCOMPLETES = `https://maps.googleapis.com/maps/api/place/autocomplete/json?key=${API_KEY}&input=${search}&sessiontoken=${Session_token}`;
             fetch(CITY_API_AUTOCOMPLETES)
                 .then((response) => response.json())
                 .then((jsonResponse) => resolve(jsonResponse))
@@ -21,7 +21,7 @@ const useApi = {
         }),
     getNearbyBreweries: (lat, long, dist) =>
         new Promise((resolve, reject) => {
-            const NEARBY_BREWERIES_DETAILS = `https://cors-anywhere.herokuapp.com/https://data.opendatasoft.com/api/records/1.0/search/?dataset=open-beer-database-breweries%40public-us&geofilter.distance=${lat}%2C+${long}%2C+${dist}`;
+            const NEARBY_BREWERIES_DETAILS = `https://data.opendatasoft.com/api/records/1.0/search/?dataset=open-beer-database-breweries%40public-us&geofilter.distance=${lat}%2C+${long}%2C+${dist}`;
             fetch(NEARBY_BREWERIES_DETAILS)
                 .then((response) => response.json())
                 .then((jsonResponse) => resolve(jsonResponse))

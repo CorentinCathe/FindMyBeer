@@ -1,13 +1,13 @@
 import useApi from "../api.js";
 
 Vue.component('search', {
-    template: `<form  @submit.prevent="handleSubmit" class="input-field">
+    template: ` <form  @submit.prevent="handleSubmit" class="input-field">
                     <input type="text" v-model="cityName" id="searchCity" v-on:keyup="handleKeyUp()"/>
                     <input type="submit" value="SEARCH" class="btn"/>
                     <div v-if="searching" class="progress">
                         <div class="indeterminate"></div>
                     </div>
-            </form>`,
+                </form>`,
     data: function() {
         return {
             cityName: "",

@@ -5,7 +5,7 @@ const DIST = 40000
 Vue.component("app", {
     template: ` <div id="app"> 
                     <search  @search-done="searchCompleted($event)"> </search>
-                    <mapVue v-if="infoMap" :infoMap=infoMap></mapVue>
+                    <mapVue v-if="infoMap" :infoMap=infoMap v-on:brewery-selected="brewerySelected($event)"></mapVue>
                     <div class="col s6">
                         <div class="row">
                             <h3 v-if="this.city" class="title">{{this.city.name}}</h3>
@@ -44,7 +44,14 @@ Vue.component("app", {
                 this.beers = []
                 useAPI.getNearbyBreweries(this.city.geometry.location.lat, this.city.geometry.location.lng, DIST)
                     .then(data => {
-                        let coordBreweries = data.records.map(brewery => {return {lat: brewery.fields.coordinates[0], lon: brewery.fields.coordinates[1]}})
+                        let coordBreweries = data.records.map(brewery => {
+                            return {
+                                lat: brewery.fields.coordinates[0],
+                                lon: brewery.fields.coordinates[1],
+                                id: brewery.fields.id,
+                                popupText: brewery.fields.name_breweries
+                            }
+                        })
                         this.infoMap = {
                             city: this.city.geometry.location,
                             markers: coordBreweries

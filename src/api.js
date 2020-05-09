@@ -21,7 +21,7 @@ const useApi = {
         }),
     getNearbyBreweries: (lat, long, dist) =>
         new Promise((resolve, reject) => {
-            const NEARBY_BREWERIES_DETAILS = `https://data.opendatasoft.com/api/records/1.0/search/?dataset=open-beer-database-breweries%40public-us&geofilter.distance=${lat}%2C+${long}%2C+${dist}`;
+            const NEARBY_BREWERIES_DETAILS = `https://data.opendatasoft.com/api/records/1.0/search/?dataset=open-beer-database-breweries%40public-us&rows=30&geofilter.distance=${lat}%2C+${long}%2C+${dist}`;
             fetch(NEARBY_BREWERIES_DETAILS)
                 .then((response) => response.json())
                 .then((jsonResponse) => resolve(jsonResponse))

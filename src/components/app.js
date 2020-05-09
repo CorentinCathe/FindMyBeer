@@ -127,7 +127,10 @@ Vue.component("app", {
                         markers: coordBreweries
                     }
 
-                    this.breweries = data.records
+                    this.breweries = data.records;
+                    this.brewerySelectedID = null;
+                    this.brewerySelectedName = null;
+                    this.beers = []
                 })
             this.city = { name: "" + coord.lat + ", " + coord.lng }
         }

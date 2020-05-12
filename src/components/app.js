@@ -43,7 +43,7 @@ Vue.component("app", {
             beers: [],
             brewerySelectedName: null,
             brewerySelectedID: null,
-            infoMap: null,
+            infoMap: {city: { lat: 51.509093, lng:  -0.094151}, markers: []},
             findBeer: 0
         };
     },
